@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Results</title>
+    <link rel="stylesheet" href="/static/styles1.css">
+    <script defer>
+        document.addEventListener("DOMContentLoaded", function() {
+            // Get the query parameters from the URL
+            const urlParams = new URLSearchParams(window.location.search);
+
+            // Get the values of 'wpm' and 'accuracy' from the query parameters
+            const wpm = urlParams.get('wpm');
+            const accuracy = urlParams.get('accuracy');
+
+            // Update the HTML elements with the retrieved values
+            let outputElementWPM = document.getElementById('wpmDisplay');
+            let outputElementAccuracy = document.getElementById('accuracyDisplay');
+            // Convert query parameters only if not null or undefined then update innerHTML. If not present in query parameters, set innerHTML to empty string
+            outputElementWPM.innerHTML = wpm ? wpm.toString() : '';
+            outputElementAccuracy.innerHTML = accuracy ? parseFloat(accuracy).toFixed(2) + '%' : '';
+        });
+    </script>
+</head>
+<body>
+    <div class="header-container">
+        <header class="title">Results</header>
+    </div>
+
+    <div class="grid-container">
+        <div class="grid-header">Net WPM</div>
+        <div class="grid-header">Accuracy(%)</div>
+        <div class="grid-item" id="wpmDisplay">0</div>
+        <div class="grid-item" id="accuracyDisplay">0</div>
+    </div>
+
+    <div class="img-container">
+        <img src="/static/referenceChart.png" alt="typing speed reference chart" class="reference-img">
+    </div>
+</body>
+</html>
